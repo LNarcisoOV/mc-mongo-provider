@@ -56,4 +56,10 @@ public class Customer {
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(name, other.name);
 	}
 
+    @Override
+    public String toString() {
+        return "Customer [customerId=" + customerId + ", name=" + name + ", lastName=" + lastName
+                + "]";
+    }
+	
 }

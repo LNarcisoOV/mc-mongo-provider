@@ -1,6 +1,8 @@
 package com.mc.service;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -11,6 +13,9 @@ import com.mc.repository.AddressRepository;
 
 @Service
 public class AddressServiceImpl implements AddressService {
+    
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AddressServiceImpl.class);
     
     @Autowired
     private AddressRepository addressRepository;
@@ -23,6 +28,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     public Address getByZipCode(String zipCode) {
+        LOGGER.info("----- MONGO PROVIDER : FINDING ADDRESS BY ZIPCODE -----");
         Query query = new Query();
         query.addCriteria(Criteria.where("zipCode").is(zipCode));
         Address address = (Address) mongoTemplate.find(query, Address.class);
