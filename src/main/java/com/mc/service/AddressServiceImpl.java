@@ -29,9 +29,9 @@ public class AddressServiceImpl implements AddressService {
 
     public Address getByZipCode(String zipCode) {
         LOGGER.info("----- MONGO PROVIDER : FINDING ADDRESS BY ZIPCODE -----");
-        Query query = new Query();
+        final Query query = new Query();
         query.addCriteria(Criteria.where("zipCode").is(zipCode));
-        Address address = (Address) mongoTemplate.find(query, Address.class);
+        final Address address = (Address) mongoTemplate.find(query, Address.class);
         return address;
     }
 }

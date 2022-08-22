@@ -30,9 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getByName(String name) {
         LOGGER.info("----- MONGO PROVIDER : FINDING CUSTOMER BY NAME: {} -----", name);
         
-        Query query = new Query();
+        final Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        Customer customer = (Customer) mongoTemplate.find(query, Customer.class);
+        final Customer customer = (Customer) mongoTemplate.find(query, Customer.class);
         
         LOGGER.info("----- MONGO PROVIDER : CUSTOMER: {} -----", customer.toString());
         
